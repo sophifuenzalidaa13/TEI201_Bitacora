@@ -1,38 +1,15 @@
-# Bill of Materials (BOM)
+# Lista de materiales del Avance 3
 
-## Formato del Archivo
+Precios unitarios referenciales de la presentación del equipo, en pesos chilenos. Las especificaciones describen la función de cada pieza en Pulso Ruta.
 
-El archivo BOM debe incluir las siguientes columnas:
+| Componente | Cant. | Especificación y justificación | Unitario (CLP) | Subtotal (CLP) |
+| --- | ---: | --- | ---: | ---: |
+| ESP32-S3 | 1 | Microcontrolador con bus I²C, PWM por hardware y Wi-Fi de 2,4 GHz para lectura, alarma y envío. | 6.500 | 6.500 |
+| MAX30102 | 1 | Módulo óptico de pulso con canal infrarrojo y salida digital por I²C. El esquema usa la alimentación de 3,3 V del módulo. | 4.500 | 4.500 |
+| KY-006 | 1 | Zumbador piezoeléctrico para el aviso local mediante PWM a 2 kHz en el firmware. | 1.500 | 1.500 |
+| Batería LiPo | 1 | Alimentación portátil prevista. Capacidad, conector y circuito de carga pendientes de documentar. | 4.500 | 4.500 |
+| Carcasa impresa en 3D | 1 | Encapsulado de 46 × 52 × 22 mm según el boceto v10, con tapa separada para el acceso al interior. | 2.000 | 2.000 |
+| Correa con velcro | 1 | Sujeción del encapsulado y ajuste a la muñeca. | 1.500 | 1.500 |
+| **Total de los seis ítems cotizados** | **6** | | | **20.500** |
 
-| Columna | Descripción | Ejemplo |
-|---------|-------------|---------|
-| Cantidad | Número de unidades | 1 |
-| Componente | Nombre descriptivo | ESP32 DevKit V1 |
-| Especificación | Detalles técnicos | 30 pines, WiFi+BT |
-| Fabricante | Marca del componente | Espressif |
-| Código/SKU | Identificador único | ESP32-WROOM-32 |
-| Proveedor | Tienda/distribuidor | AliExpress, MercadoLibre |
-| Precio Unitario | Costo por unidad (CLP) | $8,990 |
-| Precio Total | Cantidad × Precio | $8,990 |
-| Datasheet | Link a especificaciones | [URL] |
-
----
-
-## Archivos a Incluir
-
-- `bom_completo.xlsx` - Lista completa de materiales
-- `bom_completo.pdf` - Versión PDF para visualización
-- `datasheets/` - Carpeta con PDFs de componentes críticos
-
----
-
-## Presupuesto Total
-
-**Costo Total Estimado:** $[XXXXX] CLP
-
-### Desglose por Categoría
-- Microcontrolador: $X,XXX
-- Sensores: $X,XXX
-- Actuadores: $X,XXX
-- Estructura/Encapsulado: $X,XXX
-- Otros: $X,XXX
+Para ensayos de banco también se documentan protoboard, cables puente y un cable USB de datos. Sus precios y los del eventual interruptor y circuito de carga quedan por confirmar. [Presentación del equipo, diapositiva de hardware](https://docs.google.com/presentation/d/1T4sqJN47vCGOSYmh2CNdfCeFcNfqSjfXCC8BawA_nTc/edit#slide=id.p4).
