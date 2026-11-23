@@ -1,56 +1,6 @@
-# Documentación del Proyecto
+# Documentación del Avance 3
 
-## Contenido
-
-Esta carpeta contiene la documentación final del proyecto para la entrega del Avance #3.
-
----
-
-##  Carpetas
-
-#### `reporte_final/`
-Reporte completo del proyecto (máximo 15 páginas)
-
-#### `presentacion/`
-Slides de la presentación final
-
----
-
-## Documentos Principales
-
-### 1. Reporte Final del Proyecto
-`reporte_final_v3.pdf`
-
-Máximo 15 páginas, formato profesional
-
-### 2. Presentación Final
-`presentacion_avance3.pdf` o `.pptx`
-
-Duración: 10 minutos de presentación
-
----
-
-## Checklist de Entrega
-
-### Documentos Obligatorios
-- [ ] Reporte final PDF (máx. 15 páginas)
-- [ ] Presentación PDF/PPTX
-- [ ] Manual de usuario (puede estar integrado en reporte)
-
-### Contenido del Reporte
-- [ ] Contexto y problemática ODS
-- [ ] Solución propuesta (descripción técnica)
-- [ ] Proceso de diseño e iteraciones
-- [ ] Documentación técnica (resumen)
-- [ ] Resultados de testing y validación
-- [ ] Análisis de impacto ODS
-- [ ] Conclusiones y trabajo futuro
-- [ ] Referencias bibliográficas
-
-### Contenido de Presentación
-- [ ] Problema y contexto ODS (2 min)
-- [ ] Solución técnica (3 min)
-- [ ] Iteraciones y refinamiento (2 min)
-- [ ] Validación con usuarios (2 min)
-- [ ] Demo en vivo (3 min)
-- [ ] Conclusiones (1 min)
+- [Presentación del Avance 3 en Google Slides](https://docs.google.com/presentation/d/1T4sqJN47vCGOSYmh2CNdfCeFcNfqSjfXCC8BawA_nTc/edit). La pauta asigna 8–10 minutos a la presentación y 3 minutos a preguntas. Incluye una demo en vivo con participación de todo el equipo.
+- [Protocolo y resultados del ensayo de banco](../testing/reportes/avance-3.md).
+- [Instrucciones de instalación y uso](../README.md#cargar-el-código-y-usar-el-panel-local).
+- [Estructura del reporte final](reporte_final/README.md). El archivo final todavía no está adjunto a la bitácora.
