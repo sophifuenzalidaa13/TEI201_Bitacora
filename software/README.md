@@ -1,89 +1,20 @@
-# Software - Documentación
+# Software de Pulso Ruta
 
-## Contenido
-Esta carpeta contiene todo el código y documentación del software del proyecto.
+## Firmware y panel
 
-### 📁 Carpetas
+| Versión | Código e instalación | Función |
+| --- | --- | --- |
+| Panel local | [Sketch Arduino](src/Monitor_MAX30102_WiFi_KY006_Activo.ino) · [Manual de instalación](docs/INSTALACION.md) | El ESP32-S3 crea su propia red Wi-Fi y sirve el panel en el teléfono. |
+| Dashboard en la nube | [Sketch Arduino](../hardware/cardiaco_nube.ino) · [Instrucciones de carga](../README.md#dashboard-publicado-en-railway) | El ESP32-S3 envía lecturas y cambios de estado por HTTPS a un servidor Express en Railway. PostgreSQL en Aiven conserva el historial por reloj. |
 
-#### `src/`
-Código fuente del proyecto (.ino para Arduino/ESP32)
+El [dashboard publicado](https://pulso-ruta-production.up.railway.app/) muestra el pulso en BPM, la referencia personal, la banda de ±20 % y las fluctuaciones. El código del servidor y de la interfaz se mantiene en un repositorio de despliegue privado. El equipo administra el acceso al código y las cuentas para evaluar el panel.
 
-#### `librerias/`
-Librerías adicionales necesarias (no incluidas en Arduino IDE)
+## Captura y procesamiento en la versión de nube
 
-#### `docs/`
-Documentación técnica del software
+El firmware publicado configura el MAX30102 a 400 conversiones por segundo y promedia cuatro conversiones por muestra en el FIFO, lo que deja 100 muestras por segundo. Un intervalo de 10 ms entre muestras permite seguir el pulso óptico y distinguir latidos separados por cientos de milisegundos. El programa estima los BPM a partir del intervalo entre latidos y, después de calibrar, promedia cuatro estimaciones válidas. El zumbador se activa tras tres estimaciones procesadas consecutivas fuera de la banda de referencia.
 
----
+Cada cambio de estado se encola para envío. En condiciones normales también se encola una actualización cada cinco segundos aproximadamente. Esa cadencia permite consultar el historial sin enviar cada muestra óptica. La tasa de captura y el intervalo de actualización son parámetros del firmware publicado, y las capturas del Avance 3 provienen de una versión de prueba anterior.
 
-## Stack Tecnológico
-
-**Plataforma:** Arduino / ESP32  
-**Lenguaje:** C/C++  
-**IDE:** Arduino IDE 2.x  
-**Librerías principales:**
-- [Librería 1] - Versión X.X
-- [Librería 2] - Versión X.X
-- [Librería 3] - Versión X.X
-
----
-
-## Instalación y Configuración
-
-### 1. Instalar Arduino IDE
-[Instrucciones de instalación]
-
-### 2. Configurar ESP32/Arduino
-[Pasos de configuración]
-
-### 3. Instalar Librerías
-```bash
-# Copiar librerías personalizadas
-cp -r librerias/* ~/Arduino/libraries/
-```
-
-### 4. Cargar Código
-1. Abrir `src/main.ino`
-2. Seleccionar placa y puerto
-3. Compilar y subir
-
----
-
-## Configuración de Parámetros
-
-Editar las siguientes constantes en el código:
-
-```cpp
-// WiFi
-#define WIFI_SSID "tu_red"
-#define WIFI_PASS "tu_password"
-
-// Sensores
-#define SENSOR_PIN 4
-#define SAMPLE_RATE 1000
-
-// Otros parámetros
-```
-
----
-
-## Arquitectura del Software
-
-[Incluir diagrama de flujo o arquitectura]
-
-### Módulos Principales
-1. **Inicialización** - Setup del sistema
-2. **Lectura de Sensores** - Captura de datos
-3. **Procesamiento** - Análisis y decisiones
-4. **Actuación** - Control de actuadores
-5. **Comunicación** - Envío de datos
-
----
-
-## API / Endpoints (si aplica)
-
-| Endpoint | Método | Descripción |
-|----------|--------|-------------|
-| `/status` | GET | Estado del sistema |
-| `/data` | GET | Datos de sensores |
-| `/control` | POST | Control de actuadores |
+- [Arquitectura del panel local](docs/ARQUITECTURA.md)
+- [Librerías, código externo y uso de IA](../FUENTES.md)
+- [Resultados del ensayo de banco](../testing/reportes/avance-3.md)
