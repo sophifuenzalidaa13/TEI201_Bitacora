@@ -1,25 +1,20 @@
-# Esquemas de Circuito
+# Esquemas del circuito
 
-## Archivos Requeridos
+## Cableado del prototipo
 
-### Formato Fritzing
-- `circuito_completo.fzz` - Archivo fuente Fritzing
-- `esquema_circuito.png` - Exportación del esquema
-- `pcb_layout.png` - (opcional) Layout de PCB
+![Cableado real del sensor MAX30102 y el zumbador KY-006 al ESP32-S3](cableado_real.png)
 
-### Formato Wokwi
-- `wokwi_diagram.json` - Archivo de proyecto Wokwi
-- `wokwi_screenshot.png` - Captura del circuito
-- `wokwi_link.txt` - URL del proyecto online
+| Componente | Señal | ESP32-S3 |
+| --- | --- | --- |
+| MAX30102 | Alimentación | 3V3 |
+| MAX30102 | SDA | GPIO4 |
+| MAX30102 | SCL | GPIO5 |
+| MAX30102 | GND | GND común |
+| Zumbador KY-006 | Señal PWM | GPIO6 |
+| Zumbador KY-006 | GND | GND común |
 
----
+La asignación de pines coincide con la [plantilla de configuración del firmware de nube](../config.example.h). El circuito de batería LiPo, interruptor y carga queda por documentar.
 
-## Nomenclatura de Archivos
-- Usar nombres descriptivos
-- Incluir versión: `v3_esquema_final.fzz`
-- Fecha en formato: `YYYYMMDD_descripcion`
+## Simulación inicial
 
----
-
-## Notas de Diseño
-[Explicar decisiones importantes de diseño del circuito]
+La [captura de Wokwi](../Simulaci%C3%B3n.png) muestra la prueba del concepto de alarma con una señal simulada por potenciómetro.
