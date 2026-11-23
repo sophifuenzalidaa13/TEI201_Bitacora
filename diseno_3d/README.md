@@ -1,73 +1,10 @@
-# Diseño 3D - Documentación
+# Diseño 3D de Pulso Ruta
 
-## ⚠️ REQUISITO CRÍTICO
+El boceto v10 registra **46 × 52 × 22 mm** de dimensiones externas, con una base de 20 mm y una tapa de 2 mm. Muestra posiciones previstas para la placa, el sensor, la batería y el zumbador. La tapa separada está prevista para facilitar el acceso al interior.
 
-El modelo 3D debe incluir **TODOS** los componentes del prototipo:
-- ✅ Encapsulado exterior completo
-- ✅ Placa ESP32/Arduino (con dimensiones exactas)
-- ✅ Todos los sensores en posición de instalación
-- ✅ Todos los actuadores
-- ✅ Batería / fuente de alimentación
-- ✅ Cableado (routing aproximado)
-- ✅ Sistema de montaje (brackets, tornillos)
-- ✅ Orificios de ventilación (si aplica)
-
-**NO ES ACEPTABLE:** Solo el encapsulado vacío sin componentes internos
-
----
-
-## Carpetas
-
-#### `fusion360/`
-Archivos nativos de Fusion 360 (.f3d)
-
-#### `renders/`
-Imágenes renderizadas de alta calidad
-
-#### `planos/`
-Planos técnicos con cotas
-
----
-
-## Especificaciones
-
-**Software:** Autodesk Fusion 360  
-**Unidades:** Milímetros (mm)  
-**Escala:** 1:1 (dimensiones reales)
-
-**Dimensiones externas:** [X mm × Y mm × Z mm]  
-**Peso estimado:** [XXX gramos]  
-**Material:** [PLA, ABS, PETG, etc.]
-
----
-
-## Consideraciones de Diseño
-
-### Funcionales
-- [ ] Acceso a puertos USB/alimentación
-- [ ] Ventilación adecuada
-- [ ] Protección de componentes
-- [ ] Fácil acceso para mantenimiento
-- [ ] Resistencia a condiciones ambientales
-
-### Fabricación
-- [ ] Imprimible sin soportes excesivos
-- [ ] Tolerancias de ensamble (+0.2mm)
-- [ ] Grosor de pared mínimo 2mm
-- [ ] Sin ángulos imposibles (overhangs <45°)
-
----
-
-## Configuración de Impresión 3D (si fue utilizada)
-
-**Impresora:** [Modelo]  
-**Material:** [PLA/ABS/PETG]  
-**Calidad de capa:** 0.2mm  
-**Relleno:** 20-30%  
-**Soportes:** [Sí/No - dónde]  
-**Temperatura nozzle:** [°C]  
-**Temperatura cama:** [°C]  
-**Velocidad:** [mm/s]
-
-**Tiempo estimado de impresión:** [X horas]  
-**Peso de material:** [X gramos]
+| Entregable | Estado |
+| --- | --- |
+| Archivo nativo de Fusion 360 | [Diseño 2.f3d](fusion360/Diseño%202.f3d). Revisar en Fusion que la revisión final incluya los componentes internos con los volúmenes del montaje. |
+| Plano con cotas | [Boceto v10 en JPEG](planos/Plano%20tecnico%20v10.jpeg). Falta la exportación técnica en PDF con escala y cotas verificables. |
+| Renders | Pendientes las vistas exterior e interior o explosionada, exportadas desde Fusion. |
+| Ajuste y reparación | Pendiente demostrar el encaje del hardware y la apertura de la tapa con el prototipo físico. |
