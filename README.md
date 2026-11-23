@@ -18,7 +18,7 @@ Quienes conducen camiones en rutas largas tienen dificultades para mantenerse al
 
 ### Estado del Proyecto
 - **Versión actual:** v10.0
-- **Última actualización:** 19_10_2026
+- **Última actualización:** 23 de noviembre de 2026
 - **Estado:** Prototipo final
 
 ---
@@ -69,38 +69,20 @@ Estos pines corresponden a los sketches documentados. Si el montaje usa otros pi
 3. Para enviar lecturas desde el ESP32-S3, descarga [`cardiaco_nube.ino`](hardware/cardiaco_nube.ino), [`config.example.h`](hardware/config.example.h) y [`certificados.h`](hardware/certificados.h). Pon los tres archivos en una carpeta llamada `cardiaco_nube` y abre el sketch con Arduino IDE.
 4. Copia `config.example.h` a `config.h` en esa misma carpeta. Completa `WIFI_SSID` y `WIFI_PASSWORD` para una red Wi-Fi de **2,4 GHz con internet**. Pide a la administración el `DEVICE_ID` y el `DEVICE_TOKEN` del reloj que se mostrará en el panel. La plantilla ya incluye el endpoint de Railway en `SERVER_URL`. Guarda `config.h` solo en tu equipo.
 5. Revisa `SDA_PIN`, `SCL_PIN` y `BUZZER_PIN` en `config.h` según tu cableado. La plantilla usa SDA en GPIO4, SCL en GPIO5 y zumbador en GPIO6, como el sketch del panel local. Compila y sube `cardiaco_nube.ino` con la placa y el puerto que seleccionaste en Arduino IDE.
-6. Abre el **Monitor Serie a 115200 baudios** y coloca el dedo sobre el sensor. La calibración de nube dura al menos 30 segundos y requiere un mínimo de 10 mediciones válidas. Una vez calibrado, selecciona en el dashboard el reloj asociado al ID configurado y comprueba que lleguen las lecturas.
+6. Abre el **Monitor Serie a 115200 baudios**. Deja el sensor despejado hasta que se complete la referencia IR de arranque y sigue la indicación del monitor para presentar el dedo. La calibración de nube dura al menos 30 segundos y requiere un mínimo de 10 mediciones válidas. Una vez calibrado, selecciona en el dashboard el reloj asociado al ID configurado y comprueba que lleguen las lecturas.
 
 ---
 
-## Checklist de Entrega
+## Estado de la entrega del Avance 3
 
-### Hardware ✓
-- [ ] Esquema del circuito (Fritzing/Wokwi)
-- [ ] BOM completo
-- [ ] Fotos de alta resolución
-
-### Software ✓
-- [ ] Código comentado
-- [ ] Librerías documentadas
-- [ ] Manual de instalación
-
-### Diseño 3D ✓
-- [ ] Archivos Fusion 360 (.f3d) con TODOS los componentes
-- [ ] Renders de alta calidad (1+ ángulos)
-- [ ] Planos técnicos
-
-### Testing ✓
-- [ ] Reporte de testing con usuarios (mín. 5)
-- [ ] Evidencias fotográficas/videos
-- [ ] Datos cuantitativos
-
-### Documentación ✓
-- [ ] Reporte final (máx. 15 páginas)
-- [ ] Presentación (10 min)
-
----
-
+| Dimensión | Disponible en la bitácora | Pendiente |
+| --- | --- | --- |
+| Software | [Código comentado e instrucciones](software/README.md), [dashboard publicado](https://pulso-ruta-production.up.railway.app/) y [capturas de historial](testing/evidencias/README.md). | Dar acceso al evaluador al repositorio privado de despliegue y a una cuenta con reloj asignado. Verificar continuidad de envío en una prueba controlada. |
+| Hardware | [Esquema de señal](hardware/esquemas/README.md) y [BOM referencial de $20.500 CLP](hardware/bom/README.md). | Documentar batería, carga e interruptor. Subir fotos del montaje en tres ángulos y demostrar apertura de la tapa. |
+| Diseño 3D | [Archivo Fusion 360 y boceto v10 con cotas](diseno_3d/README.md). | Confirmar el ensamble interno y subir renders exterior e interior o explosionado y plano técnico en PDF. |
+| Testing | [Protocolo, resultados cuantitativos, análisis de fallas y vínculo con el Avance 1](testing/reportes/avance-3.md). | Medir precisión, latencia y tasa de entrega. Verificar zumbador y asociación con rutas. |
+| GitHub | Repositorio público, instrucciones de instalación y [FUENTES.md](FUENTES.md). | Incorporar los archivos finales pendientes. |
+| Presentación | [Diapositivas del Avance 3](https://docs.google.com/presentation/d/1T4sqJN47vCGOSYmh2CNdfCeFcNfqSjfXCC8BawA_nTc/edit) con enlace a la bitácora. | Demostración en vivo con el prototipo y el dashboard. |
 
 ---
 
