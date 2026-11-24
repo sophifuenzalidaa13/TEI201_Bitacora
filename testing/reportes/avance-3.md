@@ -27,11 +27,22 @@ Comprobar que el prototipo estima el pulso, calcula una referencia personal y pe
 
 Los valores describen los extractos visibles de la sesión. La coincidencia de 59,7 BPM entre ambas pantallas no permite emparejar un evento ni calcular latencia. La evidencia del historial tampoco basta para observar la activación física del zumbador o confirmar persistencia tras un reinicio. [Datos transcritos](../datos/avance-3.csv).
 
-### Ensayo de banco registrado en video
+### Ensayo posterior de envío al dashboard
 
-El [video de 1 min 34 s](../evidencias/avance-3/prueba-envio-dashboard.mp4) registra el [contacto con el sensor](../evidencias/avance-3/video-contacto-sensor.jpg) a los 26 s. Alrededor de 1:10, el [monitor serie](../evidencias/avance-3/video-reintentos-http.jpg) muestra intentos con `HTTP -1`, reintentos y respuestas `HTTP 201` con `BPM: null`. A 1:19, la [captura de calibración](../evidencias/avance-3/video-pulso-serial-dashboard.jpg) muestra `CALIBRACION TERMINADA` y lecturas locales como 72,4 y 87,3 BPM, mientras la tarjeta de último pulso de Railway muestra un guion.
+El [video de 34 segundos](../evidencias/avance-3/prueba-envio-dashboard.mp4) muestra el monitor serie y el dashboard del reloj de prueba. En el monitor se distinguen respuestas `HTTP 201` para envíos de 104,6, 98,0, 98,9 y 105,5 BPM, entre otros. La tarjeta de último pulso cambia durante la grabación. Esto confirma varios envíos aceptados y una actualización visible en Railway. Para calcular latencia y tasa de entrega todavía se necesita emparejar los eventos por identificador y contabilizar todos los intentos.
 
-El video confirma la medición local y la aceptación de envíos sin un valor numérico de pulso en los registros visibles. La lectura numérica guardada en el dashboard se documenta por separado en la tabla de resultados anterior. Para medir latencia y tasa de entrega se requiere emparejar los eventos por identificador y contabilizar todos los intentos.
+## Diagnóstico de señal óptica y conexión
+
+Los siguientes extractos corresponden a pruebas de diagnóstico de la misma jornada, con ajustes del firmware entre ensayos. La distancia y la posición exactas no quedaron anotadas en los logs.
+
+| Observación | Interpretación y ajuste probado |
+|---|---|
+| [Saturación de la referencia IR](../evidencias/avance-3/ir-referencia-saturada.webp) | El sketch no podía completar la referencia al arrancar. Se ensayaron cambios de corriente IR y rango ADC. |
+| [Contraste negativo y amplitud 0,0](../evidencias/avance-3/ir-reflejo-negativo.webp) | La señal bajó respecto de la referencia. La variante que exigía contraste positivo descartaba estas muestras. Se probó aceptar cambios de contraste en ambos sentidos y después usar un filtro continuo para señales débiles. |
+| [Un intervalo y retorno a cero](../evidencias/avance-3/ir-intervalos-incompletos.webp) | El filtro produjo amplitud, pero el detector no acumuló tres intervalos coherentes. Este extracto no confirma una lectura de BPM. |
+| [HTTP −1 y TLS −1](../evidencias/avance-3/railway-error-tls.webp) | La biblioteca informó un error genérico antes de obtener una respuesta HTTP. El sketch anunció un reintento. El mensaje no identifica una causa única. |
+
+El próximo ensayo óptico debe mantener fija la carcasa y registrar tres condiciones con el mismo firmware: sensor libre, contacto directo y separación final medida. Para cada condición, conservar el log y anotar el porcentaje de tiempo con BPM válidos. [Pruebas pendientes y registro](../../iteraciones/iteracion_3/README.md#pruebas-pendientes-y-cómo-registrarlas).
 
 ## Fallas y seguimiento
 
