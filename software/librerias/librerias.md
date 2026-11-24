@@ -5,7 +5,7 @@
 - `WebServer.h`: servidor HTTP integrado.
 - `Wire.h`: comunicación I²C con MAX30102.
 
-Estas cabeceras se obtienen al instalar el paquete de placas `esp32` de **Espressif Systems** desde el gestor de placas de Arduino IDE. La API PWM `ledcAttach()` usada por el sketch corresponde a la rama 3.x de Arduino-ESP32; se recomienda registrar la versión exacta instalada cuando se valide el montaje.
+Estas cabeceras se obtienen al instalar el paquete de placas `esp32` de **Espressif Systems** desde el gestor de placas de Arduino IDE. La API PWM `ledcAttach()` usada por el sketch está disponible en la versión **3.3.12** de Arduino-ESP32 que se verificó en la compilación.
 
 ## Biblioteca externa necesaria
 **SparkFun MAX3010x Pulse and Proximity Sensor Library**, de SparkFun Electronics.
@@ -22,11 +22,10 @@ Estas cabeceras se obtienen al instalar el paquete de placas `esp32` de **Espres
 
 No se requiere copiar código ajeno a esta carpeta si la dependencia se instala desde el gestor. Si más adelante se incorporan bibliotecas personalizadas, documentar nombre, versión, licencia, origen y procedimiento de instalación.
 
-## Registro de versiones reales (completar tras instalar)
+## Versiones verificadas en la compilación del 23 de noviembre de 2026
 | Componente | Versión instalada |
 |---|---|
-| Arduino IDE | Pendiente de registrar |
-| Paquete de placas Espressif ESP32 (3.x) | Pendiente de registrar |
-| SparkFun MAX3010x | Pendiente de registrar |
+| Paquete de placas `esp32` de Espressif Systems | 3.3.12 |
+| SparkFun MAX3010x | 1.1.2 |
 
 **Nota:** `MAX30105.h` es el nombre de la cabecera de SparkFun, pero la misma biblioteca es compatible con MAX30102.
