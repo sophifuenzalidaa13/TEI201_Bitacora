@@ -27,9 +27,11 @@ Comprobar que el prototipo estima el pulso, calcula una referencia personal y pe
 
 Los valores describen los extractos visibles de la sesión. La coincidencia de 59,7 BPM entre ambas pantallas no permite emparejar un evento ni calcular latencia. La evidencia del historial tampoco basta para observar la activación física del zumbador o confirmar persistencia tras un reinicio. [Datos transcritos](../datos/avance-3.csv).
 
-### Ensayo posterior de envío al dashboard
+### Ensayo de banco registrado en video
 
-El [video de 34 segundos](../evidencias/avance-3/prueba-envio-dashboard.mp4) muestra el monitor serie y el dashboard del reloj de prueba. En el monitor se distinguen respuestas `HTTP 201` para envíos de 104,6, 98,0, 98,9 y 105,5 BPM, entre otros. La tarjeta de último pulso cambia durante la grabación. Esto confirma varios envíos aceptados y una actualización visible en Railway. Para calcular latencia y tasa de entrega todavía se necesita emparejar los eventos por identificador y contabilizar todos los intentos.
+El [video de 1 min 34 s](../evidencias/avance-3/prueba-envio-dashboard.mp4) registra el [contacto con el sensor](../evidencias/avance-3/video-contacto-sensor.jpg) a los 26 s. Alrededor de 1:10, el [monitor serie](../evidencias/avance-3/video-reintentos-http.jpg) muestra intentos con `HTTP -1`, reintentos y respuestas `HTTP 201` con `BPM: null`. A 1:19, la [captura de calibración](../evidencias/avance-3/video-pulso-serial-dashboard.jpg) muestra `CALIBRACION TERMINADA` y lecturas locales como 72,4 y 87,3 BPM, mientras la tarjeta de último pulso de Railway muestra un guion.
+
+El video confirma la medición local y la aceptación de envíos sin un valor numérico de pulso en los registros visibles. La lectura numérica guardada en el dashboard se documenta por separado en la tabla de resultados anterior. Para medir latencia y tasa de entrega se requiere emparejar los eventos por identificador y contabilizar todos los intentos.
 
 ## Fallas y seguimiento
 
