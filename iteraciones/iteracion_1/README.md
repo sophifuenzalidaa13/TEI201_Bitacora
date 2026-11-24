@@ -50,22 +50,9 @@ Incluir en esta carpeta:
 
 ## Resultados de Testing Inicial
 
-### Funcionalidad Lograda
-✅ [Función 1]  
-✅ [Función 2]  
-❌ [Función 3 - no funcionó]
+No hay una captura ni un registro fechado que permita atribuir un resultado al primer montaje. El [informe del Avance 3](../../testing/reportes/avance-3.md#fallas-y-seguimiento) menciona una prueba de banco previa en la que el escáner I²C volvió a detectar el MAX30102 tras rehacer soldaduras. La fecha y la versión de aquella prueba siguen por identificar.
 
-### Problemas Identificados
-
-1. **Problema 1:**
-   - Descripción: [Detalles]
-   - Causa probable: [Análisis]
-   - Solución propuesta: [Plan]
-
-2. **Problema 2:**
-   - Descripción: [Detalles]
-   - Causa probable: [Análisis]
-   - Solución propuesta: [Plan]
+Para completar esta sección, recuperar una foto del primer circuito y el registro del escáner I²C o del monitor serie de esa sesión. Registrar fecha, pines usados, versión de código y resultado. Si se reproduce hoy con el montaje y el código originales, anotar la fecha de reproducción.
 
 ---
 
