@@ -42,21 +42,26 @@ Quienes conducen camiones en rutas largas tienen dificultades para mantenerse al
 | 1 | Zumbador piezoeléctrico KY-006 | Emite una alerta audible mediante PWM. |
 | 1 juego | Protoboard y cables puente | Permiten montar y comprobar el circuito. |
 | 1 | Cable USB de datos compatible con la placa | Permite programar y alimentar el ESP32-S3 durante la prueba. |
-| Opcional | Batería compatible, carcasa y correa | Permiten usar el montaje en formato portátil. |
+| 1 | Batería LiPo compatible con la placa (versión portátil) | Alimentación portátil. Capacidad, conector y circuito de carga pendientes de documentar. |
+| 1 | Carcasa impresa en 3D (versión portátil) | Aloja los componentes. |
+| 1 | Correa con velcro (versión portátil) | Sujeta el prototipo a la muñeca. |
+
+Consulta la [lista de materiales con precios](hardware/bom/README.md) y el [modelo de la carcasa](diseno_3d/README.md).
 
 | Conexión | Pin en el ESP32-S3 |
 | --- | --- |
+| Alimentación del MAX30102 | 3V3 |
 | SDA del MAX30102 | GPIO4 |
 | SCL del MAX30102 | GPIO5 |
 | Señal del zumbador | GPIO6 |
 | Masa de los módulos | GND común |
 
-Estos pines corresponden a los sketches documentados. Si el montaje usa otros pines, ajusta las constantes antes de cargar el código. Verifica la alimentación de los módulos y si el zumbador requiere una etapa de manejo. [Guía de instalación y conexiones](software/docs/INSTALACION.md).
+Estos pines corresponden a los sketches documentados. Si el montaje usa otros pines, ajusta las constantes antes de cargar el código. Verifica la alimentación de los módulos y si el zumbador requiere una etapa de manejo. [Guía de instalación y conexiones](software/docs/INSTALACION.md) · [Esquema del cableado](hardware/esquemas/README.md).
 
 ## Cargar el código y usar el panel local
 
-1. Instala [Arduino IDE 2.x](https://www.arduino.cc/en/software) y, en el Gestor de placas, **esp32 by Espressif Systems** de la rama **3.x**. Si el paquete no aparece, añade el índice oficial en **Preferencias → URLs adicionales del gestor de placas**. [Guía de Espressif](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html).
-2. En el Gestor de bibliotecas instala **SparkFun MAX3010x Pulse and Proximity Sensor Library**. Las dependencias se detallan en [FUENTES.md](FUENTES.md).
+1. Instala [Arduino IDE 2.x](https://www.arduino.cc/en/software) y, en el Gestor de placas, **esp32 by Espressif Systems**, versión **3.3.12**. Si el paquete no aparece, añade el índice oficial en **Preferencias → URLs adicionales del gestor de placas**. [Guía de Espressif](https://docs.espressif.com/projects/arduino-esp32/en/latest/installing.html).
+2. En el Gestor de bibliotecas instala **SparkFun MAX3010x Pulse and Proximity Sensor Library**, versión **1.1.2**. Las dependencias se detallan en [FUENTES.md](FUENTES.md).
 3. Abre [`Monitor_MAX30102_WiFi_KY006_Activo.ino`](software/src/Monitor_MAX30102_WiFi_KY006_Activo.ino). Si Arduino IDE solicita crear la carpeta del sketch, acepta. Conecta el ESP32-S3 por USB, selecciona **ESP32S3 Dev Module** o la definición de tu placa y elige el puerto correspondiente.
 4. Revisa las constantes `SDA_PIN`, `SCL_PIN`, `BUZZER_PIN`, `NOMBRE_RED`, `CLAVE_RED` y `ACTIVAR_KY006`. Pulsa **Verificar** y luego **Subir**. Abre el **Monitor Serie a 115200 baudios** y comprueba que se detecte el sensor.
 5. En el teléfono, conéctate a la red Wi-Fi del ESP32 (`PulsoESP32` por defecto). Abre en el navegador la dirección HTTP que aparezca en el Monitor Serie. Esta red funciona sin internet.
