@@ -13,7 +13,7 @@
 | Zumbador KY-006 | Señal PWM | GPIO6 |
 | Zumbador KY-006 | GND | GND común |
 
-La asignación de pines coincide con la [plantilla de configuración del firmware de nube](../config.example.h). El circuito de batería LiPo, interruptor y carga queda por documentar.
+La asignación de pines coincide con la [plantilla de configuración del firmware de nube](../config.example.h). El circuito de batería LiPo, interruptor y carga estan conectados a la placa por el b- y b+. El interruptor interrumpe el camino de b+ para que no le llegue energia a la placa cuando este este desactivado. 
 
 ## Simulación inicial
 
