@@ -23,13 +23,16 @@ Comprobar que el prototipo estima el pulso, calcula una referencia personal y pe
 | Referencia personal | 71,5 BPM. Los límites mostrados, 57,2 y 85,8 BPM, coinciden con 71,5 × 0,8 y 71,5 × 1,2. La captura del panel no permite medir cuánto duró la calibración. | [Dashboard con referencia y rango](../evidencias/avance-3/dashboard-calibracion.png) |
 | Consulta del historial | El dashboard mostró 59,7 BPM como última lectura guardada a las 11:21:08, con «Sin señal reciente». El historial muestra también eventos con hora y estado. | [Última lectura guardada](../evidencias/avance-3/dashboard-lectura-guardada.png) · [Historial](../evidencias/avance-3/dashboard-contacto.jpg) |
 | Cambios de estado y umbral | Aparecen los estados «Sin contacto» y «Esperando pulso fiable». El historial muestra dos ejemplos sobre el rango, 116,2 BPM a las 11:26:52 y 114,5 BPM a las 11:28:00. Los eventos visibles figuran sin ruta. | [Historial de cambios](../evidencias/avance-3/dashboard-contacto.jpg) · [Eventos fuera de rango](../evidencias/avance-3/dashboard-fuera-de-rango.jpg) |
-| Continuidad del envío | El monitor muestra varios mensajes `Nube: HTTP -1. Reintentando.` junto con lecturas locales. | [Monitor serie](../evidencias/avance-3/monitor-serie.jpg) |
+| Envío a Railway y actualización del panel | Se observaron envíos aceptados (`HTTP 201`) y cambios en el último pulso mostrado en el dashboard durante el ensayo. | [Video de 33 segundos](../evidencias/avance-3/prueba-envio-dashboard.mp4) |
+| Reintentos durante la medición | El monitor muestra `Nube: HTTP -1. Reintentando.` junto con lecturas locales de BPM. | [Monitor serie](../evidencias/avance-3/monitor-serie.jpg) |
 
 Los valores describen los extractos visibles de la sesión. La coincidencia de 59,7 BPM entre ambas pantallas no permite emparejar un evento ni calcular latencia. La evidencia del historial tampoco basta para observar la activación física del zumbador o confirmar persistencia tras un reinicio. [Datos transcritos](../datos/avance-3.csv).
 
-### Envíos de pulso al dashboard
+### Envío confirmado e historial del pulso
 
-El [video de 33 segundos](../evidencias/avance-3/prueba-envio-dashboard.mp4) muestra respuestas `HTTP 201` para envíos de 104,6, 98,0, 98,9 y 105,5 BPM, entre otros, y cambios en la tarjeta de último pulso del dashboard. Para medir latencia y tasa de entrega se requiere emparejar los eventos por identificador y contabilizar todos los intentos.
+El [video de 33 segundos](../evidencias/avance-3/prueba-envio-dashboard.mp4) muestra respuestas `HTTP 201` para envíos de 104,6, 98,0, 98,9 y 105,5 BPM, entre otros, y cambios en la tarjeta de último pulso del dashboard. El historial permite consultar BPM y cambios de estado con su hora, como se observa en las capturas de la tabla.
+
+Para medir la recuperación de la conexión, la latencia y la tasa de entrega, hace falta registrar todos los intentos y emparejar cada evento con el historial por identificador. La activación sonora del buzzer físico queda pendiente de comprobación en banco.
 
 ## Diagnóstico de señal óptica y conexión
 
@@ -40,7 +43,7 @@ Los siguientes extractos corresponden a pruebas de diagnóstico de la misma jorn
 | [Saturación de la referencia IR](../evidencias/avance-3/ir-referencia-saturada.webp) | El sketch no podía completar la referencia al arrancar. Se ensayaron cambios de corriente IR y rango ADC. |
 | [Contraste negativo y amplitud 0,0](../evidencias/avance-3/ir-reflejo-negativo.webp) | La señal bajó respecto de la referencia. La variante que exigía contraste positivo descartaba estas muestras. Se probó aceptar cambios de contraste en ambos sentidos y después usar un filtro continuo para señales débiles. |
 | [Un intervalo y retorno a cero](../evidencias/avance-3/ir-intervalos-incompletos.webp) | El filtro produjo amplitud, pero el detector no acumuló tres intervalos coherentes. Este extracto no confirma una lectura de BPM. |
-| [HTTP −1 y TLS −1](../evidencias/avance-3/railway-error-tls.webp) | La biblioteca informó un error genérico antes de obtener una respuesta HTTP. El sketch anunció un reintento. El mensaje no identifica una causa única. |
+| [HTTP −1 y TLS −1](../evidencias/avance-3/railway-error-tls.webp) | A las 12:36:15.881, según el monitor serie, el cliente registró `Railway: error -1 (connection refused)`, `TLS: -1 (ERROR - Generic error)` y `Nube: envio pendiente (-1). Reintentando.` El recorte documenta el intento fallido y el aviso de reintento. Los envíos aceptados se observan en el video. |
 
 El próximo ensayo óptico debe mantener fija la carcasa y registrar tres condiciones con el mismo firmware: sensor libre, contacto directo y separación final medida. Para cada condición, conservar el log y anotar el porcentaje de tiempo con BPM válidos. [Pruebas pendientes y registro](../../iteraciones/iteracion_3/README.md#pruebas-pendientes-y-cómo-registrarlas).
 
