@@ -67,30 +67,9 @@ Incluir en esta carpeta:
 
 ## Resultados de Testing
 
-### Funcionalidad Lograda
-✅ [Función 1]  
-✅ [Función 2]  
-✅ [Función 3]  
-⚠️ [Función 4 - parcial]
+El repositorio conserva un [sketch con panel Wi-Fi local](../../software/src/Monitor_MAX30102_WiFi_KY006_Activo.ino) y su [protocolo de pruebas](../../software/docs/PRUEBAS.md). Sirven para reproducir las pruebas. Falta un registro fechado que identifique cuáles se ejecutaron durante el Avance 2 y cuál fue el resultado.
 
-### Feedback del Avance #2
-
-**Comentarios del profesor/ayudante:**
-1. [Comentario 1]
-   - Acción: [Plan de mejora para v3]
-
-2. [Comentario 2]
-   - Acción: [Plan de mejora para v3]
-
-### Testing con Usuarios (2-3 personas)
-
-**Resultados cuantitativos:**
-- Facilidad de uso promedio: [X/5]
-- Satisfacción promedio: [X/5]
-
-**Feedback cualitativo:**
-- Positivo: [Comentarios]
-- A mejorar: [Comentarios]
+Para documentar esta etapa, recuperar una captura del monitor serie y otra del panel local de la misma sesión, junto con una foto del montaje. Registrar la versión del sketch y qué ocurrió al poner y retirar el dedo. Para incluir resultados de usuarios, recuperar las fichas o el feedback del Avance 2, con participantes anonimizados y sus tareas, observaciones y tiempos.
 
 ---
 
@@ -110,13 +89,7 @@ Incluir en esta carpeta:
 
 ## Comparación v1 vs v2
 
-| Aspecto | v1 | v2 | Mejora |
-|---------|----|----|--------|
-| Sensores funcionales | 2/3 | 3/3 | ✅ |
-| Tiempo de respuesta | 500ms | 200ms | ↓60% |
-| Consumo energético | 250mA | 180mA | ↓28% |
-| Encapsulado | ❌ | Prototipo | ✅ |
-| Usuarios testeados | 0 | 2 | ✅ |
+Faltan registros comparables de ambas versiones. Para medir el cambio en tiempo de respuesta y consumo, ejecutar la misma prueba con las dos configuraciones, anotar las condiciones y conservar los tiempos y mediciones originales.
 
 ---
 
