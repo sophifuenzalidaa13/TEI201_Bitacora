@@ -9,7 +9,11 @@ Capturas y video registrados el 23 de noviembre de 2026 durante las pruebas de b
 | [Última lectura guardada](avance-3/dashboard-lectura-guardada.png) | El panel conserva 59,7 BPM y muestra «Sin señal reciente». |
 | [Cambios de contacto](avance-3/dashboard-contacto.jpg) | El historial registra transiciones entre «Sin contacto» y «Esperando pulso fiable». |
 | [Eventos fuera de rango](avance-3/dashboard-fuera-de-rango.jpg) | El historial marca 114,5 y 116,2 BPM como valores sobre el rango. La ruta aparece como «Sin ruta». |
-| [Video de envío al dashboard](avance-3/prueba-envio-dashboard.mp4) | En 34 segundos se observan lecturas en el monitor serie, varias respuestas `HTTP 201` y cambios en la tarjeta de último pulso de Railway. |
+| [Video del ensayo de banco](avance-3/prueba-envio-dashboard.mp4) | Grabación de 1 min 34 s. Muestra contacto con el sensor, calibración, valores de pulso locales y respuestas de envío. |
+| [Contacto con el sensor (0:26)](avance-3/video-contacto-sensor.jpg) | Se ve el montaje y la colocación del dedo sobre el sensor óptico. |
+| [Reintentos de envío (1:10)](avance-3/video-reintentos-http.jpg) | Se observan intentos con `HTTP -1` y respuestas `HTTP 201` con `BPM: null`. |
+| [Calibración y pulso local (1:19)](avance-3/video-pulso-serial-dashboard.jpg) | El monitor serie muestra la calibración terminada y valores de pulso. La tarjeta de último pulso del dashboard muestra un guion en ese fotograma. |
+| [Video anterior de envío al dashboard](https://github.com/sophifuenzalidaa13/TEI201_Bitacora/blob/f9b9c5fb660d20e85689c2479acb5e7219269812/testing/evidencias/avance-3/prueba-envio-dashboard.mp4) | La grabación de 34 segundos registra respuestas HTTP 201 con BPM y cambios en el panel. |
 | [Referencia IR saturada](avance-3/ir-referencia-saturada.webp) | La inicialización óptica detectó saturación. En el mismo extracto se observa un HTTP 201, compatible con el envío de un estado. |
 | [Contraste IR negativo](avance-3/ir-reflejo-negativo.webp) | Cuatro registros muestran contraste entre −12.783 y −26.122 cuentas y amplitud filtrada de 0,0. |
 | [Intervalos incompletos](avance-3/ir-intervalos-incompletos.webp) | El contador sube a un intervalo y vuelve a cero sin completar la secuencia requerida. |
