@@ -27,6 +27,10 @@ Comprobar que el prototipo estima el pulso, calcula una referencia personal y pe
 
 Los valores describen los extractos visibles de la sesión. La coincidencia de 59,7 BPM entre ambas pantallas no permite emparejar un evento ni calcular latencia. La evidencia del historial tampoco basta para observar la activación física del zumbador o confirmar persistencia tras un reinicio. [Datos transcritos](../datos/avance-3.csv).
 
+### Ensayo posterior de envío al dashboard
+
+El [video de 34 segundos](../evidencias/avance-3/prueba-envio-dashboard.mp4) muestra el monitor serie y el dashboard del reloj de prueba. En el monitor se distinguen respuestas `HTTP 201` para envíos de 104,6, 98,0, 98,9 y 105,5 BPM, entre otros. La tarjeta de último pulso cambia durante la grabación. Esto confirma varios envíos aceptados y una actualización visible en Railway. Para calcular latencia y tasa de entrega todavía se necesita emparejar los eventos por identificador y contabilizar todos los intentos.
+
 ## Fallas y seguimiento
 
 **Lectura intermitente del sensor.** Durante una prueba previa de banco, el equipo rehízo las soldaduras y volvió a ejecutar el escáner I²C. El escáner volvió a detectar el MAX30102 y la conexión se estabilizó según el registro del equipo. Las capturas de esta sesión muestran lecturas posteriores de BPM. [Registro en la presentación del equipo](https://docs.google.com/presentation/d/1T4sqJN47vCGOSYmh2CNdfCeFcNfqSjfXCC8BawA_nTc/edit#slide=id.p9).
