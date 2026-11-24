@@ -33,24 +33,22 @@ Cada carpeta debe incluir:
 
 ---
 
-## Tabla Comparativa de Iteraciones
+## Evidencia de pruebas por iteración
 
-| Aspecto | v1 | v2 | v3 |
-|---------|----|----|----| 
-| **Fecha** | [fecha] | [fecha] | [fecha] |
-| **Sensores** | [lista] | [lista] | [lista] |
-| **Actuadores** | [lista] | [lista] | [lista] |
-| **Conectividad** | [tipo] | [tipo] | [tipo] |
-| **Encapsulado** | ❌ | Prototipo | Finalizado |
-| **Testing** | Solo equipo | 2 usuarios | 5+ usuarios |
-| **Funcionalidad** | 60% | 80% | 100% |
+| Iteración | Evidencia disponible |
+|---|---|
+| [1 · Concepto inicial](iteracion_1/README.md#resultados-de-testing-inicial) | Hace falta recuperar evidencia fechada del primer montaje. |
+| [2 · Primera mejora](iteracion_2/README.md#resultados-de-testing) | Está disponible el sketch con panel local y su protocolo. Quedan pendientes los registros atribuibles al Avance 2. |
+| [3 · Integración](iteracion_3/README.md#resultados-de-pruebas) | Ensayo de banco del 23 de noviembre de 2026. Las capturas y el video muestran BPM locales, una referencia personal, eventos del dashboard y reintentos de conexión. Las pruebas de señal débil se documentan como diagnóstico. |
+
+El [informe del Avance 3](../testing/reportes/avance-3.md) reúne el protocolo, los resultados y el análisis de fallas. La [carpeta de evidencias](../testing/evidencias/) contiene las capturas y el video. La [lista de mediciones pendientes](iteracion_3/README.md#pruebas-pendientes-y-cómo-registrarlas) indica qué registrar para completar la validación.
 
 ---
 
 ## Evolución del Diseño
 
 ### Versión 1 (Iteración 1) - Concepto Inicial
-**Fecha:** [XX/XX/2025]  
+**Fecha:** Por documentar
 **Estado:** Prototipo alpha - Prueba de concepto
 
 **Características:**
@@ -59,7 +57,7 @@ Cada carpeta debe incluir:
 - Aprendizajes clave
 
 ### Versión 2 (Iteración 2) - Primera Mejora
-**Fecha:** [XX/XX/2025]  
+**Fecha:** Por documentar
 **Estado:** Prototipo funcional mejorado
 
 **Mejoras implementadas:**
@@ -71,7 +69,7 @@ Cada carpeta debe incluir:
 - [Problema 2]
 
 ### Versión 3 (Iteración 3) - Versión Final
-**Fecha:** [XX/XX/2025]  
+**Fecha:** 23/11/2026 (ensayo de banco)
 **Estado:** Prototipo de alta resolución
 
 **Mejoras finales:**
@@ -79,8 +77,8 @@ Cada carpeta debe incluir:
 - [Mejora 2]
 
 **Resultado:**
-- Sistema robusto y probado
-- Listo para piloto en terreno
+- Se observó el flujo de lecturas hacia el dashboard en banco.
+- La estabilidad con la carcasa y el desempeño en una ruta quedan pendientes de validación.
 
 ---
 
@@ -129,14 +127,9 @@ Cada carpeta debe incluir:
 
 ---
 
-## Métricas de Mejora
+## Métricas disponibles
 
-| Métrica | v1 | v2 | v3 | Mejora Total |
-|---------|----|----|----| -------------|
-| Tiempo respuesta (ms) | 500 | 200 | 100 | ↓80% |
-| Consumo (mA) | 250 | 180 | 120 | ↓52% |
-| Tasa de errores (%) | 15 | 5 | 1 | ↓93% |
-| Satisfacción usuario (1-5) | 3.0 | 3.8 | 4.5 | ↑50% |
+En el Avance 3 se transcribieron nueve estimaciones locales entre **55,8 y 83,1 BPM**, con mediana de **59,7 BPM**. El dashboard mostró una referencia de **71,5 BPM** y un rango de **57,2 a 85,8 BPM**. Estos resultados corresponden a esa sesión de banco. Para comparar las tres versiones todavía se necesitan ensayos equivalentes de precisión, continuidad de envío, consumo y uso. [Lecturas transcritas](../testing/datos/avance-3.csv).
 
 ---
 
