@@ -27,15 +27,9 @@ Comprobar que el prototipo estima el pulso, calcula una referencia personal y pe
 
 Los valores describen los extractos visibles de la sesión. La coincidencia de 59,7 BPM entre ambas pantallas no permite emparejar un evento ni calcular latencia. La evidencia del historial tampoco basta para observar la activación física del zumbador o confirmar persistencia tras un reinicio. [Datos transcritos](../datos/avance-3.csv).
 
-### Ensayo de banco registrado en video
+### Envíos de pulso al dashboard
 
-El [video de 1 min 34 s](../evidencias/avance-3/prueba-envio-dashboard.mp4) registra el [contacto con el sensor](../evidencias/avance-3/video-contacto-sensor.jpg) a los 26 s. Alrededor de 1:10, el [monitor serie](../evidencias/avance-3/video-reintentos-http.jpg) muestra intentos con `HTTP -1`, reintentos y respuestas `HTTP 201` con `BPM: null`. A 1:19, la [captura de calibración](../evidencias/avance-3/video-pulso-serial-dashboard.jpg) muestra `CALIBRACION TERMINADA` y lecturas locales como 72,4 y 87,3 BPM, mientras la tarjeta de último pulso de Railway muestra un guion.
-
-El video confirma la medición local y la aceptación de envíos sin un valor numérico de pulso en los registros visibles. La lectura numérica guardada en el dashboard se documenta por separado en la tabla de resultados anterior. Para medir latencia y tasa de entrega se requiere emparejar los eventos por identificador y contabilizar todos los intentos.
-
-### Envíos numéricos en el video anterior
-
-La [grabación anterior de 34 segundos](https://github.com/sophifuenzalidaa13/TEI201_Bitacora/blob/f9b9c5fb660d20e85689c2479acb5e7219269812/testing/evidencias/avance-3/prueba-envio-dashboard.mp4) muestra respuestas HTTP 201 para envíos de 104,6, 98,0, 98,9 y 105,5 BPM, entre otros, y cambios en la tarjeta del dashboard. Este ensayo y la grabación de 1 min 34 s corresponden a registros diferentes.
+El [video de 33 segundos](../evidencias/avance-3/prueba-envio-dashboard.mp4) muestra respuestas `HTTP 201` para envíos de 104,6, 98,0, 98,9 y 105,5 BPM, entre otros, y cambios en la tarjeta de último pulso del dashboard. Para medir latencia y tasa de entrega se requiere emparejar los eventos por identificador y contabilizar todos los intentos.
 
 ## Diagnóstico de señal óptica y conexión
 
