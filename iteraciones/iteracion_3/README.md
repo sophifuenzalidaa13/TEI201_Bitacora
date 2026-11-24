@@ -1,215 +1,30 @@
-# Iteración 3 - Versión Final
+# Iteración 3 · Integración de Pulso Ruta
 
-## Información General
+El **23 de noviembre de 2026** se realizó un ensayo de banco para verificar el flujo desde el sensor hasta el dashboard y diagnosticar problemas de lectura con el montaje. La distancia exacta entre sensor y piel no quedó registrada en la sesión con BPM válidos. Se probaron distintas versiones de firmware durante la jornada.
 
-**Fecha:** [XX/XX/2025]  
-**Versión:** v3.0  
-**Estado:** Prototipo de alta resolución - Versión final  
-**Avance asociado:** Avance #3
+## Resultados de pruebas
 
----
+| Prueba | Qué se hizo y qué se observó | Evidencia |
+|---|---|---|
+| **Captura local de pulso** | Se registraron estimaciones de BPM en el monitor serie del ESP32-S3. En el extracto visible hay nueve valores entre 55,8 y 83,1 BPM, con mediana de 59,7 BPM. | [Monitor serie](../../testing/evidencias/avance-3/monitor-serie.jpg) · [CSV](../../testing/datos/avance-3.csv) |
+| **Referencia personal y límites** | Se consultó la referencia calculada en el dashboard. La referencia de 71,5 BPM generó correctamente la banda de ±20 %, de 57,2 a 85,8 BPM. La captura no registra el tiempo de calibración. | [Referencia y rango](../../testing/evidencias/avance-3/dashboard-calibracion.png) |
+| **Envío y visualización** | Se compararon las respuestas del monitor con el dashboard durante un ensayo de 34 s. El video muestra respuestas HTTP 201 con BPM, entre ellas 104,6 y 98,0, y actualizaciones visibles en la página. La tasa de entrega y el retardo aún no se midieron. | [Video del ensayo](../../testing/evidencias/avance-3/prueba-envio-dashboard.mp4) |
+| **Historial y pérdida de señal** | Se observaron cambios entre «Sin contacto» y «Esperando pulso fiable». El panel conservó la lectura guardada de 59,7 BPM y mostró «Sin señal reciente». | [Registro de estados](../../testing/evidencias/avance-3/dashboard-contacto.jpg) · [Lectura guardada](../../testing/evidencias/avance-3/dashboard-lectura-guardada.png) |
+| **Desviaciones visibles** | En el historial se observaron dos registros sobre la banda, de 116,2 y 114,5 BPM. La prueba respalda la indicación visual. La activación del zumbador físico sigue por verificar. | [Eventos fuera de rango](../../testing/evidencias/avance-3/dashboard-fuera-de-rango.jpg) |
+| **Diagnóstico de señal óptica** | Se observó saturación al tomar la referencia. Otro ensayo registró contraste negativo y amplitud filtrada de 0,0. Con el filtro continuo apareció un intervalo aislado, pero el contador volvió a cero antes de alcanzar los tres requeridos. | [Saturación](../../testing/evidencias/avance-3/ir-referencia-saturada.webp) · [Contraste negativo](../../testing/evidencias/avance-3/ir-reflejo-negativo.webp) · [Intervalos incompletos](../../testing/evidencias/avance-3/ir-intervalos-incompletos.webp) |
+| **Reintentos de conexión** | En una versión de diagnóstico, el cliente informó el error HTTPS −1, un error TLS genérico y un reintento. El video de otro ensayo muestra envíos aceptados. Hace falta una prueba controlada para medir recuperación. | [Log del reintento](../../testing/evidencias/avance-3/railway-error-tls.webp) · [Video](../../testing/evidencias/avance-3/prueba-envio-dashboard.mp4) |
 
-## Descripción
+El [informe de pruebas](../../testing/reportes/avance-3.md) detalla el protocolo y la relación con el problema de somnolencia en rutas largas. Las pruebas muestran que el sistema puede registrar desviaciones del pulso. Para evaluar su utilidad ante somnolencia se requiere un ensayo específico en condiciones controladas.
 
-Versión final del prototipo, incorporando todas las mejoras y refinamientos basados en feedback de v2 y testing extensivo con usuarios. Sistema robusto, probado y listo para piloto en contexto real.
+## Pruebas pendientes y cómo registrarlas
 
-**Objetivos alcanzados:**
-- Prototipo completamente funcional y robusto
-- Encapsulado finalizado con todos los componentes
-- Validación con 5+ usuarios del grupo objetivo
-- Métricas de impacto ODS cuantificadas
-- Sistema instalable en contexto urbano real
+| Pendiente | Cómo obtener evidencia |
+|---|---|
+| **Precisión y estabilidad con la carcasa** | Anotar el dispositivo de referencia, la versión del firmware, la posición y la separación real del sensor. En reposo, registrar pares de BPM simultáneos con contacto y con la separación final. Anotar cuándo no hubo lectura y calcular el error absoluto medio y la proporción de lecturas válidas. |
+| **Latencia y tasa de entrega** | Guardar un log con ID y hora de captura, respuesta HTTP y hora de recepción para cada evento. Comparar IDs únicos en placa y servidor. Repetir con un corte breve y restablecimiento del hotspot para medir recuperación. |
+| **Alarma sonora** | En banco, usar una prueba controlada con tres evaluaciones consecutivas fuera de la banda. Grabar con audio el zumbador y el monitor serie en el mismo video. Registrar en cuál evaluación comienza a sonar y cuándo se apaga al volver al rango. |
+| **Asociación de eventos con una ruta** | Registrar en el dashboard una ruta de prueba cuyo intervalo incluya un evento conocido y excluya otro. Guardar capturas de ambos registros y sus horas. |
+| **Prueba con usuarios y utilidad frente al problema** | En un escenario simulado y sin conducción, pedir a las personas que identifiquen la alerta y consulten el historial. Guardar fichas anónimas con la tarea, el resultado y su comentario. Evaluar la relación con somnolencia en un estudio aparte. |
+| **Fotografías de la carcasa** | Guardar una vista general del prototipo cerrado, una vista abierta con las conexiones y una vista lateral o de uso que muestre la posición del sensor. |
 
----
-
-## Cambios Respecto a v2
-
-### Hardware
-**Mejoras implementadas:**
-1. [Mejora 1]
-   - Razón: [Feedback de v2 / necesidad identificada]
-   - Impacto: [Mejora cuantitativa]
-
-2. [Mejora 2]
-   - Razón: [Feedback de v2 / necesidad identificada]
-   - Impacto: [Mejora cuantitativa]
-
-**Cambios finales:**
-- [Cambio técnico específico]
-- [Optimización final]
-
-### Software
-**Nuevas funcionalidades:**
-- [Feature final 1]
-- [Feature final 2]
-
-**Optimizaciones finales:**
-- [Optimización de código]
-- [Mejora de eficiencia]
-
-**Manejo de errores:**
-- Implementado manejo robusto de casos extremos
-- Mensajes de error informativos
-- Recuperación automática ante fallas menores
-
-### Diseño Mecánico
-**Encapsulado finalizado:**
-- Diseño optimizado para impresión 3D
-- Todos los componentes integrados
-- Sistema de montaje robusto
-- Accesibilidad para mantenimiento
-- Resistencia a condiciones ambientales
-
----
-
-## Fotos del Prototipo Final
-
-Incluir en esta carpeta:
-- `v3_prototipo_final_frontal.jpg`
-- `v3_prototipo_final_posterior.jpg`
-- `v3_interior_componentes.jpg`
-- `v3_instalado_contexto.jpg`
-- `v3_detalle_sensores.jpg`
-- `v3_testing_usuarios.jpg` (múltiples)
-
----
-
-## Resultados Finales
-
-### Funcionalidad Completa
-✅ [Todas las funciones planificadas]  
-✅ Sistema opera sin intervención manual  
-✅ Conectividad estable  
-✅ Interfaz de usuario funcional  
-✅ Manejo robusto de errores  
-
-### Testing con 5+ Usuarios
-
-**Participantes:**
-- N = [número] usuarios
-- Perfil: [Descripción del grupo objetivo]
-
-**Resultados cuantitativos:**
-| Métrica | Promedio | Desv. Std. |
-|---------|----------|------------|
-| Facilidad de uso (1-5) | [X.X] | [X.X] |
-| Satisfacción (1-5) | [X.X] | [X.X] |
-| Tiempo completar tarea (seg) | [XX] | [XX] |
-| Errores cometidos | [X.X] | [X.X] |
-
-**Feedback cualitativo más relevante:**
-- Positivo: "[Cita de usuario]"
-- Positivo: "[Cita de usuario]"
-- A mejorar: "[Cita de usuario]"
-
-### Validación de Impacto ODS
-
-**ODS Seleccionado:** [Número y nombre]
-
-**Métricas de impacto:**
-
-1. **[Métrica 1]**
-   - Baseline (sin prototipo): [Valor]
-   - Con prototipo: [Valor medido]
-   - Mejora: [% o valor absoluto]
-
-2. **[Métrica 2]**
-   - Baseline: [Valor]
-   - Con prototipo: [Valor medido]
-   - Mejora: [% o valor absoluto]
-
-**Proyección de impacto:**
-Si se despliega a escala [barrio/ciudad/región]:
-- [Impacto estimado cuantitativo]
-- [Beneficiarios potenciales]
-
----
-
-## Comparación de las 3 Iteraciones
-
-| Aspecto | v1 | v2 | v3 | Mejora Total |
-|---------|----|----|----| -------------|
-| **Sensores** | 2/3 | 3/3 | 3/3 | ✅ 100% |
-| **Actuadores** | 1/2 | 2/2 | 2/2 | ✅ 100% |
-| **Tiempo respuesta (ms)** | 500 | 200 | 100 | ↓ 80% |
-| **Consumo (mA)** | 250 | 180 | 120 | ↓ 52% |
-| **Tasa errores (%)** | 15 | 5 | 1 | ↓ 93% |
-| **Encapsulado** | ❌ | Prototipo | Finalizado | ✅ |
-| **Usuarios testeados** | 0 | 2 | 5+ | ✅ |
-| **Satisfacción (1-5)** | - | 3.8 | 4.5 | ↑ 18% |
-| **Impacto ODS validado** | ❌ | Parcial | ✅ Completo | ✅ |
-
----
-
-## Fortalezas del Prototipo Final
-
-1. **[Fortaleza 1]**
-   - Evidencia: [Datos de testing]
-
-2. **[Fortaleza 2]**
-   - Evidencia: [Feedback de usuarios]
-
-3. **[Fortaleza 3]**
-   - Evidencia: [Métricas técnicas]
-
----
-
-## Limitaciones Identificadas
-
-1. **[Limitación 1]**
-   - Descripción: [Detalles]
-   - Impacto: [Evaluación]
-   - Posible solución futura: [Ideas]
-
-2. **[Limitación 2]**
-   - Descripción: [Detalles]
-   - Impacto: [Evaluación]
-   - Posible solución futura: [Ideas]
-
----
-
-## Aprendizajes del Proceso Completo
-
-### Técnicos
-1. [Aprendizaje técnico importante]
-2. [Aprendizaje técnico importante]
-
-### De Diseño
-1. [Lección sobre proceso de diseño]
-2. [Lección sobre proceso de diseño]
-
-### De Trabajo en Equipo
-1. [Lección sobre colaboración]
-2. [Lección sobre colaboración]
-
-### De Gestión de Proyecto
-1. [Lección sobre planificación]
-2. [Lección sobre gestión de tiempo]
-
----
-
-## Trabajo Futuro Recomendado
-
-### Mejoras a Corto Plazo
-- [ ] [Mejora 1]
-- [ ] [Mejora 2]
-
-### Mejoras a Mediano Plazo
-- [ ] [Feature adicional 1]
-- [ ] [Optimización 1]
-
-### Escalabilidad
-- [ ] [Consideración para producción masiva]
-- [ ] [Modelo de negocio / sustentabilidad]
-- [ ] [Alianzas estratégicas potenciales]
-
----
-
-## Archivos en esta Carpeta
-
-- `v3_codigo_final.ino` - Código final documentado
-- `v3_esquema_final.png` - Esquema definitivo del circuito
-- `v3_modelo3d_final.f3d` - Diseño 3D completo en Fusion 360
-- `v3_fotos/` - Fotografías del prototipo final
-- `v3_testing_completo.pdf` - Reporte de testing con usuarios
-- `v3_comparativa_versiones.xlsx` - Datos comparativos v1-v2-v3
+[Montaje y esquema](../../hardware/README.md) · [Diseño 3D](../../diseno_3d/README.md) · [Índice de evidencias](../../testing/evidencias/README.md)
